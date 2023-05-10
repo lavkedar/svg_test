@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"
+      integrity="sha512-PtnRurZm07A0j27+J1/3m160UiCHTGeMoLTtK70vdm9csIPlMu/KMfglomIcPoQV14EqrnGqYupUvJXBWoFxUg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      #example {
+        border: 2px red solid;
+        margin: auto;
+        background-image: url(./Zz1kNmFkYmFmNzhlNGIxMWViYTU1ZDFmYjg0ZWI5MTc4Zg==.jfif);
+
+        background-position: center;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --h: 50vh;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      #viewbox {
+        display: none;
+      }
+
+      #panel {
+        position: fixed;
+        right: 0;
+        top: calc(var(--h)-150px);
+        height: 300px;
+        width: 100px;
+        border: 2px solid steelblue;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="example" viewBox="0 0 1000 1000" height="100vh" width="100vw">
+      <image
+        id="image"
+        href="./Zz0wZGI4ZTI2NjhlNGQxMWViODVlN2QzNTI0ZjhkZTQyOA==.jfif"
+        height="1000"
+        width="1000"
+      />
+    </svg>
+    <div id="panel">
+      <p>Hotspot Property</p>
+      <p id="x">circle x :</p>
+      <p id="y">circle y :</p>
+      <p id="radius">circle radius :</p>
+    </div>
+    <div id="viewbox">
+      <p>Hotspot Property</p>
+      <p id="x">circle x :</p>
+      <p id="y">circle y :</p>
+      <p id="HW">height and Width :</p>
+    </div>
+  </body>
+  <script>
+    vb = document.getElementById("viewbox");
+
+    vb = document.getElementById("example").getAttribute("viewbox");
+
+    paper = Snap("#example");
+
+    image = Snap("#image").drag();
+
+    image.drag((event) => {
+      event.stopPropagation();
+    });
+
+    circle = paper.circle(50, 50, 40).drag();
+
+    circle.click(() => {
+      document.getElementById("x").innerText =
+        " circle x :" + circle.getBBox().cx;
+
+      document.getElementById("y").innerText =
+        " circle y :" + circle.getBBox().cy;
+
+      document.getElementById("radius").innerText =
+        " circle radius :" + circle.getBBox().r0;
+    });
+  </script>
+</html>
